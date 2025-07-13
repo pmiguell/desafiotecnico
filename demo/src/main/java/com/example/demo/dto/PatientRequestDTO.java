@@ -6,15 +6,15 @@ import jakarta.validation.constraints.Positive;
 import java.util.List;
 
 public record PatientRequestDTO(
-        @NotBlank
+        @NotBlank(message = "name must not be blank")
         String name,
 
-        @Positive
+        @Positive(message = "age must be a positive number")
         int age,
 
-        List<String> history,
+        List<@NotBlank(message = "history must not be blank") String> history,
 
-        @NotBlank
+        @NotBlank(message = "cpf must not be blank")
         String cpf
 ) {
 }

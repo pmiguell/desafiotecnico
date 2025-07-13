@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.dto.HistoryEntryDTO;
 import com.example.demo.dto.PatientRequestDTO;
 import com.example.demo.dto.PatientResponseDTO;
 import com.example.demo.service.PatientService;
@@ -40,8 +41,8 @@ public class PatientController {
     }
 
     @PostMapping("/{patientCpf}/historico")
-    public ResponseEntity<Void> addHistory(@PathVariable String patientCpf, @RequestBody String entry) {
-        patientService.addHistory(patientCpf, entry);
+    public ResponseEntity<Void> addHistory(@PathVariable String patientCpf, @RequestBody @Valid HistoryEntryDTO historyEntryDTO) {
+        patientService.addHistory(patientCpf, historyEntryDTO.entry());
         return ResponseEntity.ok().build();
     }
 }
