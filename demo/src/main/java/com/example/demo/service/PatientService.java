@@ -3,6 +3,7 @@ package com.example.demo.service;
 import com.example.demo.dto.PatientRequestDTO;
 import com.example.demo.dto.PatientResponseDTO;
 import com.example.demo.entity.Patient;
+import com.example.demo.exception.CpfNotFoundException;
 import com.example.demo.mapper.PatientMapper;
 import com.example.demo.repository.PatientRepository;
 import lombok.RequiredArgsConstructor;
@@ -37,7 +38,7 @@ public class PatientService {
         Patient patient = patientRepository.getPatientByCpf(patientCpf);
 
         if (patient == null) {
-            throw new RuntimeException("Patient not found");
+            throw new CpfNotFoundException("CPF not found");
         }
 
         if (patient.getStatus() == Patient.Status.ACTIVE) {
@@ -51,7 +52,7 @@ public class PatientService {
 
     public void deletePatient(String patientCpf) {
         if (!patientRepository.existsByCpf(patientCpf)) {
-            throw new RuntimeException("Patient not found");
+            throw new CpfNotFoundException("CPF not found");
         }
 
         patientRepository.deletePatient(patientCpf);
@@ -65,7 +66,7 @@ public class PatientService {
         Patient patient = patientRepository.getPatientByCpf(patientCpf);
 
         if (patient == null) {
-            throw new RuntimeException("Patient not found");
+            throw new CpfNotFoundException("CPF not found");
         }
 
         patient.getHistory().add(entry);
