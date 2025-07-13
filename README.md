@@ -8,7 +8,7 @@ Content-Type: application/json
   "name": "João Silva",
   "age": 30,
   "cpf": "12345678901",
-  "history": ["Consulta de rotina", "Vacina contra gripe"]
+  "history": ["Dengue", "Febre"]
 }
 
 ## Listar Pacientes
