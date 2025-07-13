@@ -30,7 +30,7 @@ POST /pacientes/12345678901/historico
 Content-Type: application/json
 
 {
-  "entry": "Paciente relatou dor de cabeça"
+  "entry": "Paciente apresenta sintomas de Dengue"
 }
 
 ## Remover Paciente
